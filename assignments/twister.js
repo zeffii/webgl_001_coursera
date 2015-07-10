@@ -114,7 +114,10 @@ function render()
 {
     points = [];
     var S = scale;
-    var vertices = [vec2(-S, -S), vec2(0, S), vec2(S, -S)];
+    // var vertices = [vec2(-S, -S), vec2(0, S), vec2(S, -S)];
+    var dx = 0.86603 * S
+    var dy = 0.5 * S
+    var vertices = [vec2(-dx, -dy), vec2(0, dx), vec2(dx, -dy)];
 
     // "divideTriangle" operates on points *in place*
     // if numTimesToSubdivide is 0 
