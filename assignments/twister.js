@@ -5,10 +5,11 @@ var gl;
 
 var points = [];
 var bufferId;
-var slider, slider2;
+var slider, slider2, slider3;
 
 var numTimesToSubdivide = 1;
 var theta = 0;
+var scale = 1.0;
 
 
 function init()
@@ -42,6 +43,7 @@ function init()
     // changes
     slider = document.getElementById('slider');
     slider2 = document.getElementById('slider2');
+    slider3 = document.getElementById('slider3');
 
     slider.onchange = function() {
         numTimesToSubdivide = event.srcElement.value;
@@ -50,6 +52,11 @@ function init()
 
     slider2.onchange = function() {
         theta = event.srcElement.value;
+        render();
+    };
+
+    slider3.onchange = function() {
+        scale = event.srcElement.value;
         render();
     };
 
@@ -106,7 +113,8 @@ window.onload = init;
 function render()
 {
     points = [];
-    var vertices = [vec2(-1, -1 ), vec2(0,  1 ), vec2(1, -1 )];
+    var S = scale;
+    var vertices = [vec2(-S, -S), vec2(0, S), vec2(S, -S)];
 
     // "divideTriangle" operates on points *in place*
     // if numTimesToSubdivide is 0 
